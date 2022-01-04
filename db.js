@@ -11,7 +11,7 @@ const db = spicedPg(
 console.log(`[db] connecting to:${database}`);
 
 module.exports.getImages = () => {
-    const q = `SELECT * FROM images`;
+    const q = `SELECT * FROM images ORDER BY id desc`;
     return db.query(q);
 };
 
