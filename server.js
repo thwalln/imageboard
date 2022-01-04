@@ -9,6 +9,7 @@ app.use(express.json());
 app.post("/upload", uploader.single("file"), (req, res) => {
     console.log(req.body);
     console.log(req.file);
+    req.file ? res.json({ sucess: true }) : res.json({ success: false });
 });
 
 app.get("/images", (req, res) => {
