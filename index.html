@@ -8,15 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Imageboard</h1>
+    <header>
+        <h1>Imageboard</h1>
+    </header>
     <h2>Latest Images</h2>
     <main id="main">
         <form>
             <input v-model="title" type="text" name="title" placeholder="title">
             <input v-model="username" type="text" name="username" placeholder="username">
             <input v-model="description" type="text" name="description" placeholder="description">
-            <input @change="fileSelectHandler" type="file" name="file" accept="image/*">
-            <button @click.prevent="clickHandler">Submit</button>
+            <input @change="fileSelectHandler" type="file" name="file" accept="image/*" class="inputfile">
+            <button @click.prevent="clickHandler">UPLOAD</button>
         </form>
         <section class="image-grid">
             <div class="image-item" v-for="image in images">
@@ -25,6 +27,9 @@
             </div>
         </section>
     </main>
+    <footer>
+        <p>&copy; thwalln, 2021</p>
+    </footer>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
 </body>
 </html>
