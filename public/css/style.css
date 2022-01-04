@@ -1,16 +1,19 @@
 * {
     box-sizing: border-box;
-    margin: 0;
 }
 
-#main ul {
-    margin: 8px;
+.image-grid {
     display: grid;
+    /* grid-template-columns: repeat(autofill, minmax(400px 1fr)); */
     grid-template-columns: repeat(4, 1fr);
     overflow: hidden;
     list-style-type: none;
     padding: 0;
     column-gap: 24px;
+}
+
+#main p {
+    margin: 0;
 }
 
 #main img {
@@ -20,7 +23,7 @@
     padding-bottom: 8px;
 }
 
-.image-card {
+.image-item {
     padding: 8px;
     display: flex;
     height: 300px;

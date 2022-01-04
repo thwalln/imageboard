@@ -4,14 +4,21 @@ Vue.createApp({
     data() {
         return {
             images: [],
+            title: "",
+            username: "",
+            description: "",
+            file: null,
         };
     },
     mounted() {
-        fetch("/get-image-data")
+        fetch("/images")
             .then((resp) => resp.json())
-            .then((data) => {
-                this.images = data;
-            });
+            .then(({ rows }) => {
+                this.images = rows;
+            })
+            .catch(console.log);
     },
-    methods: {},
+    methods: {
+        clickHandler() {},
+    },
 }).mount("#main");

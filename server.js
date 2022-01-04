@@ -6,10 +6,12 @@ app.use(express.static("./public"));
 
 app.use(express.json());
 
-app.get("/get-image-data", (req, res) => {
-    getImages().then(({ rows }) => {
-        res.json(rows);
-    });
+app.get("/images", (req, res) => {
+    getImages()
+        .then((data) => {
+            res.json(data);
+        })
+        .catch(console.log);
 });
 
 app.get("*", (req, res) => {
