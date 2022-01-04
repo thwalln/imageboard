@@ -2,10 +2,20 @@
     box-sizing: border-box;
 }
 
+form {
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
 .image-grid {
     display: grid;
-    /* grid-template-columns: repeat(autofill, minmax(400px 1fr)); */
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    /* grid-template-columns: repeat(4, 1fr); */
+
     overflow: hidden;
     list-style-type: none;
     padding: 0;

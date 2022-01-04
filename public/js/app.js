@@ -14,6 +14,7 @@ Vue.createApp({
         fetch("/images")
             .then((resp) => resp.json())
             .then(({ rows }) => {
+                console.log("ROWS:", rows);
                 this.images = rows;
             })
             .catch(console.log);
@@ -30,7 +31,10 @@ Vue.createApp({
                 body: fd,
             })
                 .then((res) => res.json())
-                .then(console.log) // same as (result) => console.log(result)
+                .then((data) => {
+                    console.log("data", data);
+                    this.images.unshift(data);
+                })
                 .catch(console.log); // same as (err) => console.log(err)
         },
         fileSelectHandler(e) {
