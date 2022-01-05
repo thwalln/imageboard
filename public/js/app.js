@@ -18,6 +18,7 @@ Vue.createApp({
             //     { id: 3, title: "medium" },
             // ],
             // moodSelected: null,
+            igmSelected: null,
         };
     },
     mounted() {
@@ -59,7 +60,8 @@ Vue.createApp({
         //     this.moodSelected = true;
         // },
         displayImg(imageId) {
-            console.log("Image ID", imageId);
+            this.igmSelected = imageId;
+            console.log(`Image with ID ${this.igmSelected} selected`);
         },
     },
 }).mount("#main");
