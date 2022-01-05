@@ -31,13 +31,14 @@ const showImage = {
         },
     },
     template: `<div id="selectedImg">
+        <div class="image-card">
         <img :src="url">
-        <h1>{{title}}</h1>
-        <h4>{{description}}</h4>
-        <p>Uploaded by {{username}} on {{created_at}}</p>
-        <button @click="clickSelectedImg">Close</button>
+            <h1>{{title}}</h1>
+            <h4>{{description}}</h4>
+            <p>Uploaded by {{username}} on {{created_at}}</p>
+            <button @click="clickSelectedImg">Close</button></div>
+            
     </div>
-    
     `,
 };
 
