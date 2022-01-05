@@ -13,10 +13,7 @@
     </header>
     <h2>Latest Images</h2>
     <main id="main">
-        <!-- below new stuff, remove when finished -->
-        <!-- <first-component v-if="moodSelected"></first-component>
-        <h3 v-for="mood in moods" @click="selectMood">{{mood.title}}</h3> -->
-        <show-image style="color: red" v-if="igmSelected" :img-id="igmSelected"></show-image>
+        <show-image v-if="igmSelected" :img-id="igmSelected"></show-image>
         <form>
             <input v-model="title" type="text" name="title" placeholder="title">
             <input v-model="username" type="text" name="username" placeholder="username">

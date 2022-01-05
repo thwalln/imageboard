@@ -23,7 +23,13 @@ const showImage = {
             .catch(console.log);
     },
     methods: {},
-    template: `<img :src="url">
+    template: `<div id="selectedImg">
+        <img :src="url">
+        <p>{{username}}</p>
+        <p>{{title}}</p>
+        <p>{{description}}</p>
+    </div>
+    
     `,
 };
 
