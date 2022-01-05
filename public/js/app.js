@@ -49,5 +49,8 @@ Vue.createApp({
             this.igmSelected = imageId;
             console.log(`Image with ID ${this.igmSelected} selected`);
         },
+        closeImage() {
+            this.igmSelected = null;
+        },
     },
 }).mount("#main");

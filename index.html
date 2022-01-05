@@ -13,7 +13,7 @@
     </header>
     <h2>Latest Images</h2>
     <main id="main">
-        <show-image v-if="igmSelected" :img-id="igmSelected"></show-image>
+        <show-image v-if="igmSelected" :img-id="igmSelected" @close="closeImage"></show-image>
         <form>
             <input v-model="title" type="text" name="title" placeholder="title">
             <input v-model="username" type="text" name="username" placeholder="username">
