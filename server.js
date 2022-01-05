@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const { uploader } = require("./uploads");
-const { getImages, insertImage } = require("./db");
+const { getImages, insertImage, getImageData } = require("./db");
 const s3 = require("./s3");
 
 app.use(express.static("./public"));
@@ -25,6 +25,14 @@ app.get("/images", (req, res) => {
             res.json(data);
         })
         .catch(console.log);
+});
+
+app.get("/get-image/:id", (req, res) => {
+    getImageData(req.params.id)
+        .then((data) => {
+            res.json(data);
+        })
+        .catch(console.log());
 });
 
 app.get("*", (req, res) => {

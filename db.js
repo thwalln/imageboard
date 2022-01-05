@@ -20,3 +20,9 @@ module.exports.insertImage = (url, username, title, description) => {
     const params = [url, username, title, description];
     return db.query(q, params);
 };
+
+module.exports.getImageData = (imgId) => {
+    const q = `SELECT * FROM images WHERE id = $1`;
+    const params = [imgId];
+    return db.query(q, params);
+};
