@@ -36,7 +36,7 @@ const showImage = {
             <h1>{{title}}</h1>
             <h4>{{description}}</h4>
             <p>Uploaded by {{username}} on {{created_at}}</p>
-            <button @click="clickSelectedImg">Close</button></div>
+            <button @click="clickSelectedImg" class="close-card">Close</button></div>
             
     </div>
     `,

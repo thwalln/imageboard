@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <title>Onion Instaboard</title>
 </head>
@@ -18,18 +19,18 @@
         <show-image v-if="igmSelected" :img-id="igmSelected" @close="closeImage"></show-image>
         <div class="container-form">
             <form>
-            <input v-model="title" type="text" name="title" placeholder="title">
-            <input v-model="username" type="text" name="username" placeholder="username">
-            <input v-model="description" type="text" name="description" placeholder="description">
+            <input v-model="title" type="text" name="title" placeholder="Title">
+            <input v-model="username" type="text" name="username" placeholder="Username">
+            <input v-model="description" type="text" name="description" placeholder="Description">
             <input @change="fileSelectHandler" type="file" name="file" id="file" accept="image/*" class="inputfile">
-            <label for="file">Choose a file</label>
-            <button @click.prevent="clickHandler">UPLOAD</button>
+            <label for="file"><img src="/assets/search.svg" alt="" class="svg">Choose File</label>
+            <button @click.prevent="clickHandler" ><img src="/assets/upload_icon.svg" alt="" class="svg">Upload</button>
         </form>
         </div>
         <h2>Latest Images</h2>
         <section class="image-grid">
             <div class="image-item" v-for="image in images">
-                <img :src="image.url" :alt="image.title" :key="image.id" @click="displayImg(image.id)">
+                <img :src="image.url" :alt="image.title" :key="image.id" @click="displayImg(image.id)" class="homepageimg">
                 <p>{{image.title}}</p>
             </div>
         </section>
