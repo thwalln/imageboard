@@ -4,7 +4,10 @@ const showImage = {
             heading: "Hello there",
         };
     },
-    mounted() {},
+    props: ["imgId"],
+    mounted() {
+        console.log("imgId in showImage.js", this.imgId);
+    },
     methods: {},
     template: `<h1>
     {{heading}}
