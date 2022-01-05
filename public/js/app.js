@@ -58,5 +58,8 @@ Vue.createApp({
         // selectMood() {
         //     this.moodSelected = true;
         // },
+        displayImg(imageId) {
+            console.log("Image ID", imageId);
+        },
     },
 }).mount("#main");

@@ -16,7 +16,7 @@
         <!-- below new stuff, remove when finished -->
         <!-- <first-component v-if="moodSelected"></first-component>
         <h3 v-for="mood in moods" @click="selectMood">{{mood.title}}</h3> -->
-        <show-image></show-image>
+        <show-image style="color: red"></show-image>
         <form>
             <input v-model="title" type="text" name="title" placeholder="title">
             <input v-model="username" type="text" name="username" placeholder="username">
@@ -26,7 +26,7 @@
         </form>
         <section class="image-grid">
             <div class="image-item" v-for="image in images">
-                <img :src="image.url" :alt="image.title" :key="image.id">
+                <img :src="image.url" :alt="image.title" :key="image.id" @click="displayImg(image.id)">
                 <p>{{image.title}}</p>
             </div>
         </section>
