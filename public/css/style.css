@@ -29,7 +29,7 @@ header h1 {
     align-items: center;
     background-color: #8134af;
     display: flex;
-    height: 80px;
+    padding: 8px;
     justify-content: center;
 }
 
