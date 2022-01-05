@@ -1,4 +1,7 @@
 import * as Vue from "./vue.js";
+// below new stuff, remove when finished
+// import firstComponent from "./firstComponent.js";
+import showImage from "./showImage.js";
 
 Vue.createApp({
     data() {
@@ -8,6 +11,13 @@ Vue.createApp({
             username: "",
             description: "",
             file: null,
+            // below new stuff from encounter, remove when finished
+            // moods: [
+            //     { id: 1, title: "gut" },
+            //     { id: 2, title: "schlecht" },
+            //     { id: 3, title: "medium" },
+            // ],
+            // moodSelected: null,
         };
     },
     mounted() {
@@ -18,6 +28,10 @@ Vue.createApp({
                 this.images = rows;
             })
             .catch(console.log);
+    },
+    components: {
+        // "first-component": firstComponent,
+        "show-image": showImage,
     },
     methods: {
         clickHandler() {
@@ -40,5 +54,9 @@ Vue.createApp({
         fileSelectHandler(e) {
             this.file = e.target.files[0];
         },
+        //new stff below // remove when finished
+        // selectMood() {
+        //     this.moodSelected = true;
+        // },
     },
 }).mount("#main");
