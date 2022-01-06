@@ -34,7 +34,7 @@ module.exports.getAllComments = (imageId) => {
 };
 
 module.exports.insertComment = (commentText, username, imageId) => {
-    const q = `INSERT INTO comments (comment_text, username, image_id) VALUES ($1, $2, $3)`;
+    const q = `INSERT INTO comments (comment_text, username, image_id) VALUES ($1, $2, $3) RETURNING *`;
     const params = [commentText, username, imageId];
     return db.query(q, params);
 };

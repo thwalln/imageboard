@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const moment = require("moment");
 const { uploader } = require("./uploads");
 const {
     getImages,
@@ -40,6 +41,7 @@ app.get("/images", (req, res) => {
 app.get("/get-image/:id", (req, res) => {
     getImageData(req.params.id)
         .then((data) => {
+            data.rows[0].created_at = moment(data.rows[0].created_at).fromNow();
             res.json(data);
         })
         .catch(console.log());
@@ -48,13 +50,29 @@ app.get("/get-image/:id", (req, res) => {
 app.post("/comment.json", (req, res) => {
     const { comment, username, image_id } = req.body;
     insertComment(comment, username, image_id)
-        .then(res.json({ image_id, comment, username }))
+        .then(
+            (data) => {
+                console.log(data);
+                data.rows[0].created_at = moment(
+                    data.rows[0].created_at
+                ).fromNow();
+                res.json(data.rows[0]);
+            }
+            // console.log("Kartoffel", data)
+            // res.json({ image_id, comment, username })
+        )
         .catch(console.log);
 });
 
 app.get("/comments/:imageId.json", (req, res) => {
     getAllComments(req.params.imageId)
-        .then((data) => res.json(data))
+        .then((data) => {
+            data.rows.forEach(
+                (image) =>
+                    (image.created_at = moment(image.created_at).fromNow())
+            );
+            res.json(data);
+        })
         .catch(console.log);
 });
 

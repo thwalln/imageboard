@@ -43,8 +43,8 @@ const comments = {
     },
     template: `<div>
     <form>
-            <input v-model="comment" type="text" name="comment" placeholder="Comment"></input>
-            <input v-model="username" type="text" name="username" placeholder="Username"></input>
+            <input v-model="comment" type="text" name="comment" placeholder="Comment">
+            <input v-model="username" type="text" name="username" placeholder="Username">
             <button @click.prevent="clickSubmit" >submit</button>
         </form>
 
