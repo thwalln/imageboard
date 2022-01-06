@@ -38,7 +38,7 @@ const showImage = {
     template: `<div id="selectedImg">
         <div class="image-card">
         <img :src="url">
-        <show-comments :img-id="selectedImg"></show-comments>
+        <show-comments :img-id="imgId"></show-comments>
             <h1>{{title}}</h1>
             <h4>{{description}}</h4>
             <p>Uploaded by {{username}} on {{created_at}}</p>
