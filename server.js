@@ -19,7 +19,10 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     const url = `https://spicedling.s3.amazonaws.com/${req.file.filename}`;
     if (req.file) {
         insertImage(url, username, title, description)
-            .then(res.json({ title, username, description, url }))
+            .then((data) => {
+                console.log("testtestets", data);
+                res.json(data.rows[0]);
+            })
             .catch(console.log);
     } else {
         res.json({ success: false });

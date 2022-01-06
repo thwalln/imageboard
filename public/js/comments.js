@@ -41,8 +41,8 @@ const comments = {
                 .catch(console.log);
         },
     },
-    template: `
-        <form>
+    template: `<div>
+    <form>
             <input v-model="comment" type="text" name="comment" placeholder="Comment"></input>
             <input v-model="username" type="text" name="username" placeholder="Username"></input>
             <button @click.prevent="clickSubmit" >submit</button>
@@ -51,6 +51,7 @@ const comments = {
         <div v-for="item in comments">
             <p>{{item.comment_text}} by {{item.username}} on {{item.created_at}}</p>
         </div>
+    </div>
     `,
 };
 
