@@ -36,13 +36,19 @@ const showImage = {
     },
     template: `<div id="selectedImg">
         <div class="image-card">
-        <img :src="url">
-        <show-comments :img-id="imgId"></show-comments>
-            <h1>{{title}}</h1>
-            <h4>{{description}}</h4>
-            <p>Uploaded by {{username}} on {{created_at}}</p>
-            <button @click="clickSelectedImg" class="close-card">Close</button></div>
-        
+            <div class="content">
+                <div class="data">
+                    <img :src="url">
+                    <h1>{{title}}</h1>
+                    <h4>{{description}}</h4>
+                    <p>Uploaded by {{username}} {{created_at}}</p>
+                </div>
+                <show-comments :img-id="imgId"></show-comments>
+            </div>
+            <div class="actions">
+                <button @click="clickSelectedImg" class="button button-dark">Close</button>
+            </div>
+        </div>
     </div>
     `,
 };

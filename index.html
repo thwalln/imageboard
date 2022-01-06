@@ -23,8 +23,8 @@
             <input v-model="username" type="text" name="username" placeholder="Username">
             <input v-model="description" type="text" name="description" placeholder="Description">
             <input @change="fileSelectHandler" type="file" name="file" id="file" accept="image/*" class="inputfile">
-            <label for="file"><img src="/assets/search.svg" alt="" class="svg">Choose File</label>
-            <button @click.prevent="clickHandler" ><img src="/assets/upload_icon.svg" alt="" class="svg">Upload</button>
+            <label for="file" class="button"><img src="/assets/search.svg" alt="Search">Choose File</label>
+            <button @click.prevent="clickHandler" class="button button-light"><img src="/assets/upload_icon.svg" alt="">Upload</button>
         </form>
         </div>
         <h2>Latest Images</h2>
@@ -34,7 +34,9 @@
                 <p>{{image.title}}</p>
             </div>
         </section>
-        <button @click.prevent="displayMore"v-if="displayBtn">more</button>
+        <div class="actions">
+            <button @click.prevent="displayMore" v-if="displayBtn" class="button button-dark">more</button>
+        </div>
     </main>
     <footer>
         <p>&copy; thwalln, 2021</p>

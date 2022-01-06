@@ -42,15 +42,14 @@ const comments = {
         },
     },
     template: `<div>
-    <form>
-            <input v-model="comment" type="text" name="comment" placeholder="Comment">
-            <input v-model="username" type="text" name="username" placeholder="Username">
-            <button @click.prevent="clickSubmit" >submit</button>
-        </form>
-
         <div v-for="item in comments">
-            <p>{{item.comment_text}} by {{item.username}} on {{item.created_at}}</p>
+            <p>{{item.comment_text}} by {{item.username}} {{item.created_at}}</p>
         </div>
+        <form>
+            <input v-model="comment" type="text" name="comment" placeholder="Comment" class="input-dark">
+            <input v-model="username" type="text" name="username" placeholder="Username" class="input-dark">
+            <button @click.prevent="clickSubmit" class="button button-dark">Submit</button>
+        </form>
     </div>
     `,
 };
