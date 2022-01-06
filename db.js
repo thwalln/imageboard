@@ -11,7 +11,7 @@ const db = spicedPg(
 console.log(`[db] connecting to:${database}`);
 
 module.exports.getImages = () => {
-    const q = `SELECT * FROM images ORDER BY id desc`;
+    const q = `SELECT * FROM images ORDER BY id desc LIMIT 2`;
     return db.query(q);
 };
 
@@ -28,13 +28,15 @@ module.exports.getImageData = (imgId) => {
 };
 
 module.exports.getAllComments = (imageId) => {
-    const q = `SELECT * FROM comments WHERE image_id IS $1`;
+    const q = `SELECT * FROM comments WHERE image_id = $1 ORDER BY id desc`;
     const params = [imageId];
     return db.query(q, params);
 };
 
-module.exports.insertComment = (commentText, username, imageId, createdAt) => {
-    const q = `INSERT INTO comments (comment_text, username, image_id, created_at) VALUES ($1, $2, $3, $4)`;
-    const params = [commentText, username, imageId, createdAt];
+module.exports.insertComment = (commentText, username, imageId) => {
+    const q = `INSERT INTO comments (comment_text, username, image_id) VALUES ($1, $2, $3)`;
+    const params = [commentText, username, imageId];
     return db.query(q, params);
 };
+
+module.exports.getMoreImages = () => {};

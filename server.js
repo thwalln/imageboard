@@ -7,6 +7,7 @@ const {
     getImageData,
     getAllComments,
     insertComment,
+    getMoreImages,
 } = require("./db");
 const s3 = require("./s3");
 
@@ -41,12 +42,23 @@ app.get("/get-image/:id", (req, res) => {
         .catch(console.log());
 });
 
-app.post("comment.json", (req, res) => {
-    // should retrieve all the comments for a particular image when the comments component mounts.
+app.post("/comment.json", (req, res) => {
+    const { comment, username, image_id } = req.body;
+    insertComment(comment, username, image_id)
+        .then(res.json({ image_id, comment, username }))
+        .catch(console.log);
 });
 
 app.get("/comments/:imageId.json", (req, res) => {
-    // should insert a new comment into the databse
+    getAllComments(req.params.imageId)
+        .then((data) => res.json(data))
+        .catch(console.log);
+});
+
+app.get("/get-more-images", (req, res) => {
+    getMoreImages()
+        .then((data) => res.json(data))
+        .catch(console.log);
 });
 
 app.get("*", (req, res) => {

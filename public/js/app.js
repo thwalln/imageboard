@@ -52,5 +52,9 @@ Vue.createApp({
         closeImage() {
             this.igmSelected = null;
         },
+        displayMore() {
+            console.log("click");
+            fetch("/get-more-images");
+        },
     },
 }).mount("#main");

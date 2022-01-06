@@ -8,23 +8,49 @@ const comments = {
     },
     props: ["imgId"],
     mounted() {
-        // mounted - makes a GET request to retrieve all comments made about the image currently shown in the modal!
-        console.log("FIRST LOG IN COMMENTS", this.imgId);
+        fetch(`/comments/${this.imgId}.json`, {
+            imgId: this.imgId,
+        })
+            .then((resp) => resp.json())
+            .then(({ rows }) => {
+                console.log(rows);
+                this.comments = rows;
+            })
+            .catch(console.log);
     },
     methods: {
         clickSubmit() {
-            console.log("Submit button clicked");
-            console.log("This", this);
-            fetch("");
+            fetch("/comment.json", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: this.username,
+                    comment: this.comment,
+                    image_id: this.imgId,
+                }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log("data: ", data);
+                    console.log("Comments array 1: ", this.comments);
+                    this.comments.unshift(data);
+                    console.log("Comments array 2: ", this.comments);
+                })
+                .catch(console.log);
         },
-        // when you click submit, you should make a POST request to insert the new comment in the database
-        // do NOT use formData! (this is only necessary when you're sending a file along to the server). Instead, just pass the stringified JS object as the body.
-        // upon success, your new comment should be added to the array of comments (this is what you retrieved when your comment component mounted).
     },
     template: `
-        <input type="text" name="comment" placeholder="Comment"></input>
-        <input type="text" name="username" placeholder="Username"></input>
-        <button @click="clickSubmit">submit</button>
+        <form>
+            <input v-model="comment" type="text" name="comment" placeholder="Comment"></input>
+            <input v-model="username" type="text" name="username" placeholder="Username"></input>
+            <button @click.prevent="clickSubmit" >submit</button>
+        </form>
+
+        <div v-for="item in comments">
+            <p>{{item.comment_text}} by {{item.username}} on {{item.created_at}}</p>
+        </div>
     `,
 };
 

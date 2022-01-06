@@ -31,7 +31,6 @@ const showImage = {
     },
     methods: {
         clickSelectedImg() {
-            console.log("click click click");
             this.$emit("close");
         },
     },
