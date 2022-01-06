@@ -10,6 +10,7 @@ Vue.createApp({
             description: "",
             file: null,
             igmSelected: null,
+            displayBtn: true,
         };
     },
     mounted() {
@@ -53,8 +54,19 @@ Vue.createApp({
             this.igmSelected = null;
         },
         displayMore() {
-            console.log("click");
-            fetch("/get-more-images");
+            let arrayOfIds = [];
+            this.images.forEach((image) => arrayOfIds.push(image.id));
+            const smallestId = arrayOfIds.pop();
+            console.log("small", smallestId);
+            fetch(`/get-more-images/${smallestId}`)
+                .then((resp) => resp.json())
+                .then(({ rows }) => {
+                    if (rows[rows.length - 1].id === rows[0].lowestId) {
+                        this.displayBtn = false;
+                    }
+                    this.images = [...this.images, ...rows];
+                })
+                .catch(console.log);
         },
     },
 }).mount("#main");

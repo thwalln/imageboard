@@ -55,8 +55,8 @@ app.get("/comments/:imageId.json", (req, res) => {
         .catch(console.log);
 });
 
-app.get("/get-more-images", (req, res) => {
-    getMoreImages()
+app.get("/get-more-images/:id", (req, res) => {
+    getMoreImages(req.params.id)
         .then((data) => res.json(data))
         .catch(console.log);
 });
