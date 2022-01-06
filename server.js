@@ -1,7 +1,13 @@
 const express = require("express");
 const app = express();
 const { uploader } = require("./uploads");
-const { getImages, insertImage, getImageData } = require("./db");
+const {
+    getImages,
+    insertImage,
+    getImageData,
+    getAllComments,
+    insertComment,
+} = require("./db");
 const s3 = require("./s3");
 
 app.use(express.static("./public"));

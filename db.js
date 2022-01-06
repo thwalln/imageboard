@@ -27,16 +27,16 @@ module.exports.getImageData = (imgId) => {
     return db.query(q, params);
 };
 
-module.exports.getAllComments = () => {
+module.exports.getAllComments = (imageId) => {
     // gets all comments for a particular image
-    const q = "";
-    const params = [];
+    const q = `SELECT * FROM comments WHERE image_id IS $1`;
+    const params = [imageId];
     return db.query(q, params);
 };
 
-module.exports.insertComment = () => {
+module.exports.insertComment = (commentText, username, imageId, createdAt) => {
     // adds a specific comment for an image into the database
-    const q = "";
-    const params = [];
+    const q = `INSERT INTO comments (comment_text, username, image_id, created_at) VALUES ($1, $2, $3, $4)`;
+    const params = [commentText, username, imageId, createdAt];
     return db.query(q, params);
 };
