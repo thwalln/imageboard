@@ -35,6 +35,14 @@ app.get("/get-image/:id", (req, res) => {
         .catch(console.log());
 });
 
+app.post("comment.json", (req, res) => {
+    // should retrieve all the comments for a particular image when the comments component mounts.
+});
+
+app.get("/comments/:imageId.json", (req, res) => {
+    // should insert a new comment into the databse
+});
+
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
